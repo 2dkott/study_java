@@ -15,23 +15,36 @@ public class Lesson2Task4 {
         logger.addHandler(fileHandler);
 
         Scanner scanner = new Scanner(System.in);
-        logger.info("Введите первое число");
-        int firstNumber = Integer.parseInt(scanner.next().replace("?", ""));
-        logger.info("Введите второе число");
-        int secondNumber = Integer.parseInt(scanner.next().replace("?", ""));
-        logger.info("Введите результат");
-        int result = scanner.nextInt();
+        int firstNumber = scanner.nextInt();
+        logger.info("Введено первое число:" + firstNumber);
+        String sign = scanner.next();
+        logger.info("Введен знак:" + sign);
+        int secondNumber = scanner.nextInt();
+        logger.info("Введено второе число:" + firstNumber);
         scanner.close();
+        int result = 0;
+        if(sign.contains("+")) result = sum(firstNumber,secondNumber);
+        if(sign.contains("-")) result = subtraction(firstNumber,secondNumber);
+        if(sign.contains("*")) result = multiply(firstNumber,secondNumber);
+        if(sign.contains("/")) result = divide(firstNumber,secondNumber);
 
-        for(int i = 0; i<10; i++){
-            for(int j = 0; j<100; j=j+10){
-                int modifiedFirstNumber = firstNumber*10+i;
-                int modifiedSecondNumber = j+secondNumber;
-                if(modifiedFirstNumber+modifiedSecondNumber == result){
-                    logger.info(String.format("%s+%s=%s\n", modifiedFirstNumber, modifiedSecondNumber, result));
-                }
-            }
-        }
-        logger.info("Нет вариантов решения");
+        logger.info(String.format("%s%s%s=%s", firstNumber, sign, secondNumber, result));
+
+    }
+
+    static int sum(int firstNumber, int secondNumber){
+        return firstNumber + secondNumber;
+    }
+
+    static int subtraction(int firstNumber, int secondNumber){
+        return firstNumber - secondNumber;
+    }
+
+    static int multiply(int firstNumber, int secondNumber){
+        return firstNumber * secondNumber;
+    }
+
+    static int divide(int firstNumber, int secondNumber){
+        return firstNumber / secondNumber;
     }
 }
