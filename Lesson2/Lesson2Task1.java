@@ -1,6 +1,6 @@
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -10,7 +10,8 @@ public class Lesson2Task1 {
     static Logger logger = Logger.getLogger(Lesson2Task1.class.getName());
 
     public static void main(String[] args) throws IOException {
-        FileHandler fileHandler = new FileHandler("task1.log", true);
+        Path filePath = Path.of("Lesson2", "task1.log");
+        FileHandler fileHandler = new FileHandler(filePath.toString(), true);
         fileHandler.setFormatter(new SimpleFormatter());
         logger.addHandler(fileHandler);
 
