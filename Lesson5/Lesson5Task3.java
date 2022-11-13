@@ -79,14 +79,14 @@ class Queen{
         }
     }
 
-    private void markDiagonal(String [][] board, int yDirection) {
-        int tempX = x+yDirection;
+    private void markDiagonal(String [][] board, int xDirection) {
+        int tempX = x+xDirection;
         for (int i = y+1; i<8; i++) {
             if(tempX > 7 || tempX < 0) return;
             if (board[i][tempX].equals(EMPTY_FIELD)) {
                     board[i][tempX] = STRIKE_FIELD;
             }
-            tempX = tempX+yDirection;
+            tempX = tempX+xDirection;
         }
     }
 }
