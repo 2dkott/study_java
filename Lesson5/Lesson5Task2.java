@@ -25,11 +25,7 @@ class UserList{
     public void printDuplicates(){
         HashMap<String, Integer> tempHashMap = new HashMap<>();
         userLIst.stream().forEach(userName -> {
-            if(tempHashMap.containsKey(userName.getName())){
-                tempHashMap.replace(userName.getName(), tempHashMap.get(userName.getName())+1);
-            } else {
-                tempHashMap.put(userName.getName(),0);
-            }
+            tempHashMap.put(userName.getName(), tempHashMap.getOrDefault(userName.getName(),0)+1);
         });
         System.out.println("\nСписок повторяющихся имен с количеством повторений:");
         tempHashMap.entrySet()
