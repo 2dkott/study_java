@@ -72,7 +72,7 @@ class NoteBook {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("NoteBook: %s(OS), %s(Proc), %s(RAM), %s(SSD), %s(Color)", osName, processor, ram, ssdStorage, color);
     }
 }
