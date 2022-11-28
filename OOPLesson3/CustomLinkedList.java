@@ -13,9 +13,11 @@ public class CustomLinkedList <E> implements Iterable<E> {
     public void add(E data) {
         if(Objects.isNull(headNode)) {
             headNode = new Node<>(data);
+            return;
         }
         if(Objects.isNull(headNode.getNext())) {
             currentNode = headNode.linkAndReturn(new Node<E>(data));
+            return;
         }
         currentNode = currentNode.linkAndReturn(new Node<E>(data));
     }
