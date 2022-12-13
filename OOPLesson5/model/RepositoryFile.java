@@ -8,6 +8,8 @@ public class RepositoryFile implements Repository {
     private UserMapper mapper = new UserMapper();
     private FileOperation fileOperation;
 
+    private final String DIVIDER = ",";
+
     public RepositoryFile(FileOperation fileOperation) {
         this.fileOperation = fileOperation;
     }
@@ -17,7 +19,7 @@ public class RepositoryFile implements Repository {
         List<String> lines = fileOperation.readAllLines();
         List<User> users = new ArrayList<>();
         for (String line : lines) {
-            users.add(mapper.map(line));
+            users.add(mapper.map(line,DIVIDER));
         }
         return users;
     }
@@ -39,7 +41,7 @@ public class RepositoryFile implements Repository {
         users.add(user);
         List<String> lines = new ArrayList<>();
         for (User item: users) {
-            lines.add(mapper.map(item));
+            lines.add(mapper.map(item,DIVIDER));
         }
         fileOperation.saveAllLines(lines);
         return id;
@@ -51,7 +53,7 @@ public class RepositoryFile implements Repository {
         users.removeAll(deleteUsers);
         List<String> lines = new ArrayList<>();
         for (User item: users) {
-            lines.add(mapper.map(item));
+            lines.add(mapper.map(item,DIVIDER));
         }
         fileOperation.saveAllLines(lines);
     }

@@ -2,13 +2,13 @@ import controllers.UserController;
 import model.FileOperation;
 import model.FileOperationImpl;
 import model.Repository;
-import model.RepositoryFile;
+import model.RepositoryFileSemikolon;
 import views.ViewUser;
 
 public class Main {
     public static void main(String[] args) {
-        FileOperation fileOperation = new FileOperationImpl("users.txt");
-        Repository repository = new RepositoryFile(fileOperation);
+        FileOperation fileOperation = new FileOperationImpl("usersB.txt");
+        Repository repository = new RepositoryFileSemikolon(fileOperation);
         UserController controller = new UserController(repository);
         ViewUser view = new ViewUser(controller);
         view.run();

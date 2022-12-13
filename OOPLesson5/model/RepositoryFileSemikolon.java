@@ -3,11 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositoryFileB implements Repository {
-    private UserMapperSecond mapper = new UserMapperSecond();
+public class RepositoryFileSemikolon implements Repository {
+    private UserMapper mapper = new UserMapper();
     private FileOperation fileOperation;
 
-    public RepositoryFileB(FileOperation fileOperation) {
+    private final String DIVIDER = ";";
+
+    public RepositoryFileSemikolon(FileOperation fileOperation) {
         this.fileOperation = fileOperation;
     }
 
@@ -16,7 +18,7 @@ public class RepositoryFileB implements Repository {
         List<String> lines = fileOperation.readAllLines();
         List<User> users = new ArrayList<>();
         for (String line : lines) {
-            users.add(mapper.map(line));
+            users.add(mapper.map(line,DIVIDER));
         }
         return users;
     }
@@ -38,7 +40,7 @@ public class RepositoryFileB implements Repository {
         users.add(user);
         List<String> lines = new ArrayList<>();
         for (User item: users) {
-            lines.add(mapper.map(item));
+            lines.add(mapper.map(item,DIVIDER));
         }
         fileOperation.saveAllLines(lines);
         return id;
@@ -50,7 +52,7 @@ public class RepositoryFileB implements Repository {
         users.removeAll(deleteUsers);
         List<String> lines = new ArrayList<>();
         for (User item: users) {
-            lines.add(mapper.map(item));
+            lines.add(mapper.map(item,DIVIDER));
         }
         fileOperation.saveAllLines(lines);
     }
