@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class UserObject{
 
     final private Identifier identifier;
@@ -31,6 +33,17 @@ public class UserObject{
         return String.format("Пользователь '%s'(id:%s)", names.getFullName(), identifier.toString());
     }
 
+    @Override
+    public int hashCode(){
+        return Objects.hash(identifier,names.getFirstName(),names.getLastName());
+    }
 
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof UserObject){
+            return o.hashCode()==this.hashCode();
+        }
+        return false;
+    }
 
 }
